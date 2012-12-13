@@ -1,0 +1,26 @@
+#!/bin/sh
+
+FILES="util.cmo drawing.cmo vector.cmo point.cmo spring.cmo drawer.cmo driver.cmo main.cmo"
+
+LIBS="str.cma unix.cma nums.cma bigarray.cma sdl.cma sdlloader.cma sdlttf.cma 
+      sdlmixer.cma"
+
+
+OPTFILES="util.cmx drawing.cmx vector.cmx point.cmx spring.cmx drawer.cmx driver.cmx main.cmx"
+
+OPTLIBS="str.cmxa unix.cmxa nums.cmxa bigarray.cmxa sdl.cmxa sdlloader.cmxa sdlttf.cmxa 
+      sdlmixer.cmxa"
+
+
+OCAMLC=ocamlc.opt
+OCAMLCP=ocamlcp
+OCAMLOPT=ocamlopt
+
+OCAMLSDLLIB=`ocamlfind query sdl`
+
+OUTNAME=springtoy
+
+
+#$OCAMLC -o $OUTNAME -g -I $OCAMLSDLLIB $LIBS $FILES
+$OCAMLOPT -o $OUTNAME -I $OCAMLSDLLIB $OPTLIBS $OPTFILES
+
